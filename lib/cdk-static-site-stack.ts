@@ -25,7 +25,8 @@ export class CdkStaticSiteStack extends cdk.Stack {
       bucketName: siteDomain,
       websiteIndexDocument: 'index.html',
       websiteErrorDocument: 'error.html',
-      removalPolicy: cdk.RemovalPolicy.DESTROY
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
+      autoDeleteObjects: true //removes non-empty bucket during stack destruction
     })
     new cdk.CfnOutput(this, 'Bucket', { value: siteBucket.bucketName });
 
